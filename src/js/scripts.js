@@ -5,11 +5,11 @@ function userScroll() {
   window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
       navbar.classList.add("navbar-sticky");
-      console.log("listener called");
-      toTopBtn.classList.add("show");
+     
+     // toTopBtn.classList.add("show");
     } else {
       navbar.classList.remove("navbar-sticky");
-      toTopBtn.classList.remove("show");
+    //  toTopBtn.classList.remove("show");
     }
   });
 }
@@ -19,66 +19,7 @@ function scrollToTop() {
   document.documentElement.scrollTop = 0;
 }
 
-async function fetchPrayerTimes() {
-  try {
-    const response = await fetch(
-      "https://api.allorigins.win/raw?url=https://themasjidapp.org/50/prayers"
-    );
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const text = await response.text();
-
-    // Parse the HTML and extract prayer times
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(text, "text/html");
-
-    const rows = doc.querySelectorAll("tr.whitespace-nowrap");
-
-    let fajrTime, zuhrTime, asrTime, maghribTime, ishaTime;
-
-    rows.forEach((row) => {
-      const cells = row.querySelectorAll("td");
-      if (cells.length > 0) {
-        const prayerName = cells[0].textContent.trim();
-        const prayerTime = cells[1].textContent.trim();
-
-        switch (prayerName) {
-          case "Fajr":
-            fajrTime = prayerTime;
-            break;
-          case "Dhuhr":
-            zuhrTime = prayerTime;
-            break;
-          case "Asr":
-            asrTime = prayerTime;
-            break;
-          case "Maghrib":
-            maghribTime = prayerTime;
-            break;
-          case "Isha":
-            ishaTime = prayerTime;
-            break;
-        }
-      }
-    });
-
-    // Update the DOM with prayer times
-    document.getElementById("fajrCounter").textContent = fajrTime || "N/A";
-    document.getElementById("zuhrCounter").textContent = zuhrTime || "N/A";
-    document.getElementById("asrCounter").textContent = asrTime || "N/A";
-    document.getElementById("maghribCounter").textContent =
-      maghribTime || "N/A";
-    document.getElementById("ishaCounter").textContent = ishaTime || "N/A";
-    document.getElementById("jumuahCounter").textContent =
-      zuhrTime >= "12:45 pm" ? "1:30 pm" : "1:00 pm";
-  } catch (error) {
-    console.error("Error fetching prayer times:", error);
-  }
-}
-
 document.addEventListener("DOMContentLoaded", function () {
-  fetchPrayerTimes();
   userScroll();
 });
 

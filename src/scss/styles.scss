@@ -106,7 +106,7 @@
     opacity: 1;
   }
   
-  @media (max-width: 992px) {
+  @media (max-width: 992px) and (min-width:768) {
     .xl-text {
       font-size: 50px;
     }
@@ -148,4 +148,21 @@
     .details-2 .decoration-star {
       top: 300px;
     }
+  }
+
+  @media (max-width: 768px) {
+    .header .decoration-star {
+      top: 100px;
+      left: -100px;
+      width: 600px;
+      opacity: 0.2;
+    }
+    
+    .header .decoration-star-2 {
+      top: 480px;
+      right: -300px;
+      width: 600px;
+      opacity: 0.7;
+    }
+    
   }
