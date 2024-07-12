@@ -1,0 +1,22 @@
+[
+    {
+        "name": "John Doe",
+        "image": "images/testimonial-1.jpg"
+    },
+    {
+        "name": "Jane Smith",
+        "image": "images/testimonial-2.jpg"
+    },
+    {
+        "name": "Alice Johnson",
+        "image": "images/testimonial-3.jpg"
+    },
+    {
+        "name": "Mark Brown",
+        "image": "https://abuhuraira.org/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-02-at-23.13.05-669x1024.jpeg"
+    },
+    {
+        "name": "Emma Wilson",
+        "image": "images/testimonial-5.jpg"
+    }
+]
